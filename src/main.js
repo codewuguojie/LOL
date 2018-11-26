@@ -3,6 +3,7 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import '@/assets/css/style.css'     //  引入初始样式
+import '@/assets/css/iconfont.css'
 import 'assets/css/reset.css'     //  引入初始样式
 
 

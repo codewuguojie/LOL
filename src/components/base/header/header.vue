@@ -3,7 +3,7 @@
         <img src="../../../assets/image/user.jpg"/>
         <div class="ul-box">
             <ul class="tab-ul">
-                <li class="tab-li" v-for="(list,index) in this.li_list" @click="tab(index)">{{list.text}}</li>
+                <li :class="{'active':index==numIndex}" v-for="(list,index) in this.li_list" @click="tab(index)">{{list.text}}</li>
             </ul>
         </div>
         <i class="message iconfont">&#xe62a;</i>
@@ -20,7 +20,13 @@
                     {index:3,text:'资讯'},
                     {index:4,text:'热点'},
                     {index:4,text:'专栏'}
-                ]
+                ],
+                numIndex:0
+            }
+        },
+        methods:{
+            tab(index){
+                this.numIndex = index
             }
         }
     }
@@ -51,11 +57,14 @@
             line-height: 50px;
             float: left;
             font-size: 16px;
-            .tab-li{
+            li{
                 height: 50px;
                 width: 20%;
                 text-align: center;
                 float: left;
+            }
+            .active{
+                color: rgb(108,202,184);
             }
         }
     }
