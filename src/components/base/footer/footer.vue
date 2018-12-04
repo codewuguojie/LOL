@@ -3,8 +3,10 @@
         <div class="ul-box">
             <ul class="ul">
                 <li class="li" :class="{'active':index==numIndex}" v-for="(list,index) in liData" @click="tab(index)">
-                    <i :class="list.class"></i>
-                    <span>{{list.title}}</span>
+                    <router-link :to="list.name">
+                        <i :class="list.class"></i>
+                        <span>{{list.title}}</span>
+                    </router-link>
                 </li>
             </ul>
         </div>
@@ -18,11 +20,11 @@
         data (){
             return{
                 liData:[
-                    {index:1,class:'iconfont icon-zixun',title:'资讯'},
-                    {index:2,class:'iconfont icon-yijiahaoyou',title:'好友'},
-                    {index:3,class:'iconfont icon-02',title:'电视台'},
-                    {index:4,class:'iconfont icon-shangcheng',title:'商城'},
-                    {index:5,class:'iconfont icon-geren12',title:'个人'}
+                    {index:1,class:'iconfont icon-shu',title:'书城',name:'home'},
+                    {index:2,class:'iconfont icon-icon-test',title:'音乐',name:'music'},
+                    {index:3,class:'iconfont icon-shipin',title:'视频',name:'video'},
+                    {index:4,class:'iconfont icon-gaoxiao',title:'段子',name:'funny'},
+                    {index:5,class:'iconfont icon-geren12',title:'个人',name:'my'}
                 ],
                 numIndex:0
             }
@@ -39,6 +41,7 @@
 .footer{
     width: 100%;
     height: 60px;
+    background: #fff;
     box-shadow: #ccc 0 -2px 10px 1px;
     .ul-box{
         width: 100%;

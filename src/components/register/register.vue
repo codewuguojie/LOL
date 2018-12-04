@@ -3,7 +3,7 @@
         <div class="bg-box"></div>
         <div class="register">
             <div class="header">
-                <i class="iconfont" @click="back()">&#xe640;</i>
+                <i class="iconfont icon-icon-arrow-left2" @click="back()"></i>
                 <span class="login-btn" @click="geLogin()">登录</span>
             </div>
             <div class="logo">
@@ -93,7 +93,7 @@
                 this.isPhone = false
                 if(!this.checkPhone()) return;
                 if(!this.checkPassword()) return;
-                getResult('post',`https://www.apiopen.top/createUser?key=00d91e8e0cca2b76f515926a36db68f5&phone=${this.phone}&passwd=${this.password}`)
+                getResult('post',`/mock/createUser?key=00d91e8e0cca2b76f515926a36db68f5&phone=${this.phone}&passwd=${this.password}`)
                     .then(data=>{
                         console.log(data)
                         if(data.code === 200){
@@ -133,7 +133,7 @@
                 line-height: 50px;
                 i{
                     float: left;
-                    padding: 0 0 0 15px;
+                    padding: 15px 15px;
                 }
                 .login-btn{
                     float: right;

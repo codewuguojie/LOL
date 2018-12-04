@@ -6,7 +6,7 @@
                 <li :class="{'active':index==numIndex}" v-for="(list,index) in this.li_list" @click="tab(index)">{{list.text}}</li>
             </ul>
         </div>
-        <i class="message iconfont">&#xe62a;</i>
+        <i class="message iconfont icon-xiaoxi"></i>
     </div>
 </template>
 

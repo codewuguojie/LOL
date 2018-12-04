@@ -8,6 +8,17 @@ let cutoutStr = value => {
     return str;
 }
 
+let textStr = value => {
+    let str = '';
+    if (value.length > 90) {
+        str = value.substring(0,90)+'...';
+    }else{
+        str = value;
+    }
+    return str;
+}
+
+
 let cutoutNum = value => {
     let str = '';
     console.log(typeof value);
@@ -47,4 +58,4 @@ let cutoutBankNum = value => {
     str = value.substring(0,4)+'***********'+value.substring(value.length-3,value.length);
     return str;
 }
-export { cutoutStr,cutoutNum,formateDate ,toThousands,cutoutIdNum,cutoutBankNum}
+export { cutoutStr,cutoutNum,formateDate,textStr,toThousands,cutoutIdNum,cutoutBankNum}

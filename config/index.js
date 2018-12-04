@@ -10,11 +10,11 @@ module.exports = {
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {   // 需要 proxyTable 代理的接口（可跨域）
-      '/api': {
-        target: '',
+      '/mock': {
+        target: 'https://www.apiopen.top',
         changeOrigin: true,
         pathRewrite: {
-          '^/api': ''
+          '^/mock': '/mock'
         }
       }
     },

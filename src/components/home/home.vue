@@ -8,9 +8,24 @@
     <!--search-->
     <div class="search">
         <div class="search-box">
-            <i class="iconfont icon-shezhi"></i>
-            <span>搜索你想了解的资讯</span>
+            <i class="iconfont icon-sousuo"></i>
+            <span>搜索您感兴趣的小说</span>
         </div>
+    </div>
+
+    <!--content-->
+    <div class="message">
+        <ul class="book-ul">
+            <li class="book-li" v-for="(list,index) in this.list" @click="goBook(list)">
+                <img class="book-img" :src="list.book_cover"/>
+                <div class="book-info">
+                    <p class="book-title">{{list.bookname}}</p>
+                    <p class="book-author">{{list.author_name}}</p>
+                    <p class="book-type">{{list.first_cate_name}}</p>
+                    <p class="book-introduce">{{list.book_info | textStr}}</p>
+                </div>
+            </li>
+        </ul>
     </div>
 
     <!--footer-->
@@ -24,10 +39,35 @@
 <script>
     import Header from '@/components/base/header/header'
     import Footer from '@/components/base/footer/footer'
+    import {getResult} from "../../api/common";
+    import {textStr} from "../../api/filter";
+
     export default {
         components:{
             'v-header':Header,
             'v-footer':Footer
+        },
+        data(){
+            return{
+                list:[],
+            }
+        },
+        methods:{
+            init(){
+                getResult('get','/mock/novelApi')
+                    .then(data=>{
+                        console.log(data.data)
+                        if(data.code==200 && data.data.length>0){
+                            this.list = data.data
+                        }
+                    })
+            },
+            goBook(list){
+                this.$router.push({name:'book',query:list.bookname})
+            }
+        },
+        mounted(){
+            this.init()
         }
     };
 </script>
@@ -54,7 +94,7 @@
             text-align: center;
             border-radius: 5px;
             i{
-                font-size: 16px;
+                font-size: 20px;
                 color: rgba(60,63,65,0.5);
             }
             span{
@@ -63,6 +103,51 @@
             }
         }
     }
+
+    /*message*/
+    .message{
+        width: 100%;
+        margin-bottom: 80px;
+        .book-ul{
+            width: 100%;
+            .book-li{
+                width: 96%;
+                height: 160px;
+                margin: 5px auto;
+                .book-img{
+                    width: 110px;
+                    height: 160px;
+                    float: left;
+                    margin-right: 10px;
+                }
+                .book-info{
+                    width: 240px;
+                    height: 160px;
+                    float: left;
+                    .book-title{
+                        font-size: 16px;
+                        color: rgb(254,116,66);
+                        margin-bottom: 5px;
+                    }
+                    .book-author{
+                        font-size: 14px;
+                        color: rgb(0,4,9);
+                        margin-bottom: 5px;
+                    }
+                    .book-type{
+                        font-size: 14px;
+                        color: rgb(0,4,9);
+                        margin-bottom: 5px;
+                    }
+                    .book-introduce{
+                        font-size: 12px;
+                        margin-bottom: 5px;
+                    }
+                }
+            }
+        }
+    }
+
 
     .footer{
         position: fixed;

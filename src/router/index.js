@@ -5,6 +5,8 @@ import Login from '@/components/login/login'
 import Register from '@/components/register/register'
 import Header from '@/components/base/header/header'
 import Footer from '@/components/base/footer/footer'
+import Book from '@/components/book/book'
+import Music from '@/components/music/music'
 Vue.use(Router)
 
 export default new Router({
@@ -33,6 +35,16 @@ export default new Router({
             path: '/footer',
             name: 'footer',
             component: Footer
+        },
+        {
+            path: '/book',
+            name: 'book',
+            component: Book
+        },
+        {
+            path: '/music',
+            name: 'music',
+            component: Music
         },
 
 		{ path: '*', redirect: { name: "home" } }
