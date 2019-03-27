@@ -65,6 +65,10 @@
             goBook(list){
                 this.$router.push({name:'book',query:list.bookname})
             }
+
+
+
+            
         },
         mounted(){
             this.init()
